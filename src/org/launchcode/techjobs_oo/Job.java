@@ -28,6 +28,22 @@ public class Job {
     }
 
     @Override
+    public String toString() {
+        String noData = "Data not available";
+        if (this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            return "\nID: " + this.getId()
+                    + "\nName: " + (this.name == null ? noData : this.getName())
+                    + "\nEmployer: " + (this.employer == null ? noData : this.getEmployer())
+                    + "\nLocation: " + (this.location == null ? noData : this.getLocation())
+                    + "\nPosition Type: " + (this.positionType == null ? noData : this.getPositionType())
+                    + "\nCore Competency: " + (this.coreCompetency == null ? noData : this.getCoreCompetency())
+                    + "\n";
+        }
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;
