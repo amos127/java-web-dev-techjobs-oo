@@ -34,11 +34,11 @@ public class Job {
             return "OOPS! This job does not seem to exist.";
         } else {
             return "\nID: " + this.getId()
-                    + "\nName: " + (this.name == null ? noData : this.getName())
-                    + "\nEmployer: " + (this.employer == null ? noData : this.getEmployer())
-                    + "\nLocation: " + (this.location == null ? noData : this.getLocation())
-                    + "\nPosition Type: " + (this.positionType == null ? noData : this.getPositionType())
-                    + "\nCore Competency: " + (this.coreCompetency == null ? noData : this.getCoreCompetency())
+                    + "\nName: " + (this.name == null || this.name.isEmpty() ? noData : this.getName())
+                    + "\nEmployer: " + (this.employer == null || this.employer.getValue().isEmpty() ? noData : this.getEmployer())
+                    + "\nLocation: " + (this.location == null || this.location.getValue().isEmpty() ? noData : this.getLocation())
+                    + "\nPosition Type: " + (this.positionType == null || this.positionType.getValue().isEmpty() ? noData : this.getPositionType())
+                    + "\nCore Competency: " + (this.coreCompetency == null || this.coreCompetency.getValue().isEmpty() ? noData : this.getCoreCompetency())
                     + "\n";
         }
     }

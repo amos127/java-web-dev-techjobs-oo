@@ -9,19 +9,17 @@ import static org.junit.Assert.*;
 public class JobTest {
 
     Job testJobOne;
-    Job testJobTwo;
-    Job testJobThree;
+    Job emptyJob;
 
     @Before
     public void createJobObject() {
         testJobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        testJobTwo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        testJobThree = new Job();
+        emptyJob = new Job();
     }
 
     @Test
     public void testSettingJobId() {
-        assertFalse(testJobOne.getId() == testJobTwo.getId());
+        assertNotEquals(testJobOne.getId(), emptyJob.getId());
     }
 
     @Test
@@ -44,7 +42,7 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        assertFalse(testJobOne.getId() == testJobTwo.getId());
+        assertNotEquals(testJobOne.getId(), emptyJob.getId());
     }
 
     @Test
@@ -66,20 +64,20 @@ public class JobTest {
 
     @Test
     public void toStringNullValuesReturnNoDataMessage() {
-        testJobThree.setName("Librarian");
-        String testString = "\nID: " + testJobThree.getId()
-                + "\nName: " + testJobThree.getName()
+        emptyJob.setName("Librarian");
+        String testString = "\nID: " + emptyJob.getId()
+                + "\nName: " + emptyJob.getName()
                 + "\nEmployer: Data not available"
                 + "\nLocation: Data not available"
                 + "\nPosition Type: Data not available"
                 + "\nCore Competency: Data not available"
                 + "\n";
-        assertEquals(testString, testJobThree.toString());
+        assertEquals(testString, emptyJob.toString());
     }
 
     @Test
     public void toStringReturnsErrorMessageIfJobHasNoData() {
-        assertEquals("OOPS! This job does not seem to exist.", testJobThree.toString());
+        assertEquals("OOPS! This job does not seem to exist.", emptyJob.toString());
     }
 
 }
